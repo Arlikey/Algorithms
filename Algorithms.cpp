@@ -5,7 +5,12 @@
 #include <functional>
 using namespace std;
 
+int random() {
+	return rand() % 10;
+}
+
 int main() {
+	srand(time(0));
 
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
@@ -15,9 +20,11 @@ int main() {
 	copy(arr, arr + 10, out);
 
 	list<int> lst(10, 0);
-	copy(arr, arr + 10, lst.begin());
+	generate(lst.begin(), lst.end(), random);
 
-	cout << "\nList by copy algorithm: ";
+	//copy(arr, arr + 10, lst.begin());
+
+	cout << "\nList by random generate: ";
 	copy(lst.begin(), lst.end(), out);
 
 	list<int> secondLst;
